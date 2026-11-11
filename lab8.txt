@@ -1,0 +1,158 @@
+4JD25CS136@DESKTOP-EPSV0PN MINGW64 ~
+$ mkdir lab8
+
+4JD25CS136@DESKTOP-EPSV0PN MINGW64 ~
+$ cd lab8
+
+4JD25CS136@DESKTOP-EPSV0PN MINGW64 ~/lab8
+$ git init
+Initialized empty Git repository in C:/Users/4JD25CS136/lab8/.git/
+
+4JD25CS136@DESKTOP-EPSV0PN MINGW64 ~/lab8 (master)
+$ echo "hello irionamn"
+hello irionamn
+
+4JD25CS136@DESKTOP-EPSV0PN MINGW64 ~/lab8 (master)
+$ echo "hello irionamn" > first.txt
+
+4JD25CS136@DESKTOP-EPSV0PN MINGW64 ~/lab8 (master)
+$ git add .
+warning: in the working copy of 'first.txt', LF will be replaced by CRLF the next time Git touches it
+
+4JD25CS136@DESKTOP-EPSV0PN MINGW64 ~/lab8 (master)
+$ git commit -m "initial commit"
+[master (root-commit) 4e62283] initial commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 first.txt
+
+4JD25CS136@DESKTOP-EPSV0PN MINGW64 ~/lab8 (master)
+$ git checkout -b bug
+Switched to a new branch 'bug'
+
+4JD25CS136@DESKTOP-EPSV0PN MINGW64 ~/lab8 (bug)
+$ echo "hi superman" > fe1.txt
+
+4JD25CS136@DESKTOP-EPSV0PN MINGW64 ~/lab8 (bug)
+$ git add .
+warning: in the working copy of 'fe1.txt', LF will be replaced by CRLF the next time Git touches it
+
+4JD25CS136@DESKTOP-EPSV0PN MINGW64 ~/lab8 (bug)
+$ git commit -m "commit A"
+[bug 8bd213d] commit A
+ 1 file changed, 1 insertion(+)
+ create mode 100644 fe1.txt
+
+4JD25CS136@DESKTOP-EPSV0PN MINGW64 ~/lab8 (bug)
+$ echo "hi superman" > fe2.txt && git add . && git commit -m "commit B"
+warning: in the working copy of 'fe2.txt', LF will be replaced by CRLF the next time Git touches it
+[bug e4c7be1] commit B
+ 1 file changed, 1 insertion(+)
+ create mode 100644 fe2.txt
+
+4JD25CS136@DESKTOP-EPSV0PN MINGW64 ~/lab8 (bug)
+$ echo "hi superman" > fe3.txt && git add . && git commit -m "commit C"
+warning: in the working copy of 'fe2.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'fe3.txt', LF will be replaced by CRLF the next time Git touches it
+[bug 56d2e2b] commit C
+ 1 file changed, 1 insertion(+)
+ create mode 100644 fe3.txt
+
+4JD25CS136@DESKTOP-EPSV0PN MINGW64 ~/lab8 (bug)
+$ echo "hi superman" > fe4.txt && git add . && git commit -m "commit D"
+warning: in the working copy of 'fe3.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'fe4.txt', LF will be replaced by CRLF the next time Git touches it
+[bug 48f3a6e] commit D
+ 1 file changed, 1 insertion(+)
+ create mode 100644 fe4.txt
+
+4JD25CS136@DESKTOP-EPSV0PN MINGW64 ~/lab8 (bug)
+$ git log
+commit 48f3a6e5495832799359eb061a8250d623370e50 (HEAD -> bug)
+Author: nehakulsumn880-lgtm <nehakulsumn880@gmail.com>
+Date:   Wed Nov 11 09:39:42 2026 +0530
+
+    commit D
+
+commit 56d2e2b5a5c6e39941ccf1f41f4ba7d609f950f9
+Author: nehakulsumn880-lgtm <nehakulsumn880@gmail.com>
+Date:   Wed Nov 11 09:39:36 2026 +0530
+
+    commit C
+
+commit e4c7be11ce01f9fed74131a149acf825b91efa2a
+Author: nehakulsumn880-lgtm <nehakulsumn880@gmail.com>
+Date:   Wed Nov 11 09:39:04 2026 +0530
+
+    commit B
+
+commit 8bd213d3352510ce4f37253bed23075a8f4e5859
+Author: nehakulsumn880-lgtm <nehakulsumn880@gmail.com>
+Date:   Wed Nov 11 09:38:09 2026 +0530
+
+    commit A
+
+commit 4e62283aa45f87708654db1f868d4f407c9479a2 (master)
+Author: nehakulsumn880-lgtm <nehakulsumn880@gmail.com>
+Date:   Wed Nov 11 09:36:25 2026 +0530
+
+    initial commit
+
+4JD25CS136@DESKTOP-EPSV0PN MINGW64 ~/lab8 (bug)
+$ git log --oneline
+48f3a6e (HEAD -> bug) commit D
+56d2e2b commit C
+e4c7be1 commit B
+8bd213d commit A
+4e62283 (master) initial commit
+
+4JD25CS136@DESKTOP-EPSV0PN MINGW64 ~/lab8 (bug)
+$ git checkout master
+Switched to branch 'master'
+
+4JD25CS136@DESKTOP-EPSV0PN MINGW64 ~/lab8 (master)
+$ git log --oneline
+4e62283 (HEAD -> master) initial commit
+
+4JD25CS136@DESKTOP-EPSV0PN MINGW64 ~/lab8 (master)
+$ git cherry-pick 8bd213d^..48f3a6e
+[master 65dc23d] commit A
+ Date: Wed Nov 11 09:38:09 2026 +0530
+ 1 file changed, 1 insertion(+)
+ create mode 100644 fe1.txt
+[master e47ef5c] commit B
+ Date: Wed Nov 11 09:39:04 2026 +0530
+ 1 file changed, 1 insertion(+)
+ create mode 100644 fe2.txt
+[master d3c1760] commit C
+ Date: Wed Nov 11 09:39:36 2026 +0530
+ 1 file changed, 1 insertion(+)
+ create mode 100644 fe3.txt
+[master 4f2b470] commit D
+ Date: Wed Nov 11 09:39:42 2026 +0530
+ 1 file changed, 1 insertion(+)
+ create mode 100644 fe4.txt
+
+4JD25CS136@DESKTOP-EPSV0PN MINGW64 ~/lab8 (master)
+$ git log --oneline
+4f2b470 (HEAD -> master) commit D
+d3c1760 commit C
+e47ef5c commit B
+65dc23d commit A
+4e62283 initial commit
+
+4JD25CS136@DESKTOP-EPSV0PN MINGW64 ~/lab8 (master)
+$ git remote add origin https://github.com/nehakulsumn880-lgtm/lab8.git
+
+4JD25CS136@DESKTOP-EPSV0PN MINGW64 ~/lab8 (master)
+$ git push -u origin master
+Enumerating objects: 12, done.
+Counting objects: 100% (12/12), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (9/9), done.
+Writing objects: 100% (12/12), 1012 bytes | 1012.00 KiB/s, done.
+Total 12 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (3/3), done.
+To https://github.com/nehakulsumn880-lgtm/lab8.git
+ * [new branch]      master -> master
+branch 'master' set up to track 'origin/master'.
+
